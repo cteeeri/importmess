@@ -1,0 +1,22 @@
+$ python -m dira.myfileone
+dira fileone hello
+
+# below will look for __main__, python dirb resulted same
+$ python -m dira
+/Volumes/nifty128g/localws/importmess/venv/bin/python: No module named dira.__main__; 'dira' is a package and cannot be directly executed
+
+$ python dira/myfileone.py
+dira fileone hello
+
+# will only include dirb in path thus dira is totally not seen by pthon interpreter
+$ python dirb/filebb.py
+Traceback (most recent call last):
+  File "dirb/filebb.py", line 1, in <module>
+    from dira.myfileone import hello
+ModuleNotFoundError: No module named 'dira'
+
+# below -m will include current directory, thus it is able to find
+$ python -m dirb.filebb
+dira fileone hello > added dirb with Chin
+
+
